@@ -1,0 +1,5 @@
+MS SQL Server management studio
+
+Server Name: localdb/(...) ja Windows Authentification
+
+CREATE DATABASE trostnikovTITpv22;
