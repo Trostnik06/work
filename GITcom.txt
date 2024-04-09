@@ -1,0 +1,10 @@
+cd desktop 
+git init AndmebaasidTITpv22
+cd AndmebaasidTITpv22
+git config --global user.name "Dmitri Trostnikov"
+git config --global user.email "trostnikov06@mail.ru"
+git config --global --list
+----
+kui tekkinud uus ja salvestatud, siis on vaja add ja commit
+git add
+git commit -a -m "Põhi ab sõnad on lisatud"
