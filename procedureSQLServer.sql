@@ -49,3 +49,31 @@ END;
 
 --käivitamine
 EXEC tootajaKustuta 1;
+
+--NEXT PROCEDURE
+-- tabeli struktuuri muutmine
+CREATE PROCEDURE muudatus
+@tegevus varchar(10),
+@tabelinimi varchar(25),
+@veerunimi varchar(25),
+@tyyp varchar(25) =null
+AS
+BEGIN
+	DECLARE @sqltegevus as varchar(max)
+	set @sqltegevus=case 
+	when @tegevus='add' then concat('ALTER TABLE ', 
+	@tabelinimi, ' ADD ', @veerunimi, ' ', @tyyp)
+	when @tegevus='drop' then concat('ALTER TABLE ', 
+	@tabelinimi, ' DROP COLUMN ', @veerunimi)
+END;
+print @sqltegevus;
+begin 
+EXEC (@sqltegevus);
+END
+END;
+--добавление столбца
+EXEC muudatus @tegevus='add', @tabelinimi='tootaja', @veerunimi='test', @tyyp='varchar(1)';
+
+SELECT * FROM tootaja;
+--удаление столбца
+EXEC muudatus @tegevus='drop', @tabelinimi='tootaja', @veerunimi='test';
